@@ -1,0 +1,57 @@
+<div class="containr">
+	<div class="header">
+		<div class="search">
+			<button type="submit">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+					<path
+						d="M23.809 21.646l-6.205-6.205c1.167-1.605 1.857-3.579 1.857-5.711 0-5.365-4.365-9.73-9.731-9.73-5.365 0-9.73 4.365-9.73 9.73 0 5.366 4.365 9.73 9.73 9.73 2.034 0 3.923-.627 5.487-1.698l6.238 6.238 2.354-2.354zm-20.955-11.916c0-3.792 3.085-6.877 6.877-6.877s6.877 3.085 6.877 6.877-3.085 6.877-6.877 6.877c-3.793 0-6.877-3.085-6.877-6.877z" />
+				</svg>
+			</button>
+			<input type="text" name="search" id="search" placeholder="Search..."
+				(input)="onSearchChange($event.target.value)" />
+		</div>
+		<div class="nav">
+			<a (click)="uiService.dashSelect('list')"
+				[class.active]="(uiService.dashboardSelected | async) === 'list'">Liste</a>
+			<a (click)="uiService.dashSelect('map')"
+				[class.active]="(uiService.dashboardSelected | async) === 'map'">Map</a>
+		</div>
+	</div>
+	<div class="table" [style.height]="'calc(80vh - ' + (uiService.lineChartHeight| async)+ 'px)'">
+		<table>
+			<thead>
+				<tr>
+					<th>
+					</th>
+					<th class="building">
+						Bâtiment
+					</th>
+					<th class="typology">
+						Typologie
+					</th>
+					<th class="component">
+						Composante
+					</th>
+					<th class="date">
+						Date d'installation
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<ng-container *ngFor="let building of(buildings$ | async); let i=index">
+
+					<tr *ngIf="!building.hidden" (click)="toggleBuilding(building)" class="building-item">
+						<td class="checkbox">
+							<input type="checkbox" name="choosedBuildings" value="{{ building.name }}"
+								id=" {{ building.name }}" [attr.checked]="building.checked" (change)="change($event)" />
+						</td>
+						<td class="building">{{ building.name }}</td>
+						<td class="typology">{{ building.typology || "_"}}</td>
+						<td class="component">{{ building.component  || "_"}}</td>
+						<td class="date">{{ building.date  || "_"}}</td>
+					</tr>
+				</ng-container>
+			</tbody>
+		</table>
+	</div>
+</div>

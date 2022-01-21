@@ -1,0 +1,69 @@
+@import "../../../../styles.scss";
+
+.data-viewer {
+  position: absolute;
+  bottom: 1rem;
+  right: 2rem;
+  z-index: 1001;
+  > div:nth-child(1) {
+    border-radius: 0.25rem 0 0 0.25rem;
+  }
+  > div:nth-child(2) {
+    border-radius: 0 0.25rem 0.25rem 0;
+  }
+}
+.box.buildings {
+  overflow: auto;
+  max-width: 90vw;
+  min-height: 4rem;
+  display: flex;
+  flex-direction: row;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 0;
+  li {
+    list-style: none;
+    color: $primary-foreground;
+    padding: 0.75rem 1.5rem 0.75rem 1rem;
+    margin: 0.5rem;
+    border-radius: 5px;
+    position: relative;
+    .close-btn {
+      position: absolute;
+      right: 0;
+      top: 0rem;
+      overflow: hidden;
+      border-radius: 100%;
+      transition: all 0.1s ease-out;
+      padding: 0.35rem 0.5rem;
+      cursor: pointer;
+      svg {
+        height: 0.75rem;
+        width: 0.75rem;
+        * {
+          fill: $primary-foreground;
+        }
+      }
+      .close-btn:active {
+        background-color: rgba(255, 255, 255, 0.8);
+      }
+      .close-btn:hover {
+        background-color: rgba(200, 200, 200, 0.5);
+      }
+    }
+  }
+}
+.info-message {
+  height: 100%;
+  color: grey;
+  width: fit-content;
+
+  margin: auto;
+  display: flex;
+  align-items: center;
+}
+@media screen and (max-width: 1000px) {
+  .info-message {
+    font-size: 1.4em;
+  }
+}

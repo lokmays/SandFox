@@ -1,0 +1,68 @@
+<div class="containr" [style.width]="(uiService.sidenavWidth|async)+'px'">
+    <h3>Ajouter une alarme</h3>
+    <ul class="buildings row text-center p-4 pt-0">
+        <li *ngFor="let building of (dataManagerService.choosedBuildings|async)" class="btn btn-light btn-sm mr-2">
+            {{building}}</li>
+    </ul>
+    <div class="levels">
+        <div class="tabs">
+            <div class="tab high" [class.active]="(tabIndex|async)===0" (click)="clickHandle(0)">Élevé</div>
+            <div class="tab avg" [class.active]="(tabIndex|async)===1" (click)="clickHandle(1)">Moyen</div>
+            <div class="tab low" [class.active]="(tabIndex|async)===2" (click)="clickHandle(2)">Faible</div>
+        </div>
+        <form [formGroup]="alarmForm" (ngSubmit)="onSubmit()" class="form-signin">
+            <div class="tab-page high" [class.active]="(tabIndex|async)===0">
+                <div class="s-min high-min">
+                    <span>S. Min</span>
+                    <input type="number" formControlName="high_seuil_min">
+                </div>
+                <div class="s-max high-max">
+                    <span>S. Max</span>
+                    <input type="number" formControlName="high_seuil_max">
+                </div>
+            </div>
+
+            <div class="tab-page avg" [class.active]="(tabIndex|async)===1">
+                <div class="s-min avg-min">
+                    <span>S. Min</span>
+                    <input type="number" formControlName="avg_seuil_min">
+                </div>
+                <div class="s-max avg-max">
+                    <span>S. Max</span>
+                    <input type="number" formControlName="avg_seuil_max">
+                </div>
+            </div>
+            <div class="tab-page low" [class.active]="(tabIndex|async)===2">
+                <div class="s-min low-min">
+                    <span>S. Min</span>
+                    <input type="number" formControlName="low_seuil_min">
+                </div>
+                <div class="s-max low-max">
+                    <span>S. Max</span>
+                    <input type="number" formControlName="low_seuil_max">
+                </div>
+            </div>
+            <div class="notifs">
+                <span>Notifications:</span>
+                <div>
+                    <input type="checkbox" formControlName="sms">
+                    <span>SMS</span>
+                </div>
+                <div>
+                    <input type="checkbox" formControlName="email">
+                    <span>Email</span>
+                </div>
+                <div>
+                    <input type="checkbox" formControlName="notification">
+                    <span>Alarm</span>
+                </div>
+
+            </div>
+            <div class="mt-3 d-flex justify-content-center">
+                <input type="submit" value="Valider" class="btn btn-primary mr-2">
+                <div (click)="cancel()" class="btn btn-primary ml-2">Annuler</div>
+            </div>
+        </form>
+
+    </div>
+</div>

@@ -1,0 +1,32 @@
+g.arc-label line {
+  stroke: #e9e9e9;
+}
+.d3-chart {
+  .coil-label {
+    fill: #000;
+    font-size: 12px;
+  }
+  .arc path {
+    stroke: #fff;
+  }
+
+  ._tooltip {
+    position: fixed;
+    text-align: center;
+    width: 60px;
+    height: 12px;
+    padding: 8px;
+    padding-bottom: 16px;
+    cursor: none;
+    font: 10px sans-serif;
+    background: rgba(50, 50, 50, 0.5);
+    color: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+    pointer-events: none;
+    border-radius: 10px;
+    font-weight: 600;
+  }
+  > div > svg {
+    margin: auto;
+  }
+}

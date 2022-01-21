@@ -1,0 +1,8 @@
+<ul class="containr">
+    <alert [type]="'danger'" *ngFor="let errorMessage of (errorMessages|async)">
+        {{errorMessage.message}}
+    </alert>
+    <alert [type]="'success'" *ngFor="let successMessage of (successMessages|async)">
+        {{successMessage.message}}
+    </alert>
+</ul>

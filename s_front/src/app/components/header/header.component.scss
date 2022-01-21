@@ -1,0 +1,187 @@
+@import "../../../styles.scss";
+#header {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  color: $secondary-l-background;
+  background-color: $primary-background;
+  justify-content: space-between;
+  align-items: center;
+  // padding:.75rem .5rem 1rem 0rem;
+  // overflow: hidden;
+  box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.25);
+  z-index: 1500;
+  .navbar-brand,
+  .tabs {
+    height: 100%;
+  }
+  img {
+    height: 100%;
+    width: auto;
+  }
+  .navbar-brand {
+    img {
+      height: 2.5rem;
+      margin: 0.7rem 0.25rem 0.25rem 0.25rem;
+    }
+  }
+  .tabs {
+    display: flex;
+    padding-top: 0.3rem;
+    svg,
+    img {
+      height: 2.5rem;
+      width: auto;
+      padding-bottom: 0.4rem;
+    }
+    > div {
+      padding: 0 0.5rem;
+      margin: 0 1.5rem;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      outline: none;
+      span {
+        font-size: 0.8rem;
+        margin: 0;
+        margin-top: -0.25rem;
+        padding: 0;
+        padding-bottom: 0.5rem;
+        color: $secondary-foreground;
+      }
+      svg {
+        * {
+          fill: $secondary-foreground;
+        }
+      }
+    }
+    > div span::after {
+      width: 4rem;
+      width: -webkit-fill-available;
+      height: 0px;
+      background-color: transparent;
+      position: absolute;
+      left: 0%;
+      bottom: 0%;
+      text-align: center;
+      border-bottom: 0.2rem solid transparent;
+    }
+    > div.active {
+      color: $secondary-l-background;
+      .fas {
+        color: $secondary-l-background;
+      }
+      span {
+        color: $secondary-l-background;
+      }
+      span::after {
+        content: "";
+        border-color: $secondary-l-background;
+        background-color: $secondary-l-background;
+      }
+      svg * {
+        fill: $secondary-l-background;
+      }
+    }
+  }
+  .user {
+    height: fit-content;
+  }
+  #menu-mobile {
+    display: none;
+    transition: all 0.25s ease-out;
+  }
+}
+.fas-container {
+  margin: 0.5em;
+  overflow: hidden;
+  height: 2em;
+  width: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .fas {
+    cursor: pointer;
+    color: $secondary-l-background;
+    transition: all 0.5s ease-out;
+    font-size: 1.5em;
+    &:hover {
+      color: $secondary-d-background;
+      font-size: 1.6em;
+    }
+    &.fa-cog:hover {
+      -moz-transform: rotate(180deg);
+      -webkit-transform: rotate(180deg);
+      transform: rotate(180deg);
+    }
+  }
+}
+nav nav .fas {
+  color: $secondary-foreground;
+}
+.username {
+  font-weight: 500;
+  font-size: 1.2em;
+  padding: 0.5em;
+}
+.dropdown {
+  width: min-content;
+  height: min-content;
+}
+button {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+}
+span {
+  font-weight: 500;
+}
+@media screen and (max-width: 1000px) {
+  #menu-mobile {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7em;
+
+    img {
+      height: 1.7em;
+    }
+    span {
+      display: none !important;
+    }
+    .menu-btn {
+      cursor: pointer;
+    }
+  }
+  .navbar-brand {
+    display: none;
+  }
+  .tabs {
+    display: flex;
+    padding-top: 0.3rem;
+    position: fixed;
+    left: 0;
+    top: 4rem;
+    z-index: 2000;
+    flex-direction: column;
+    background-color: $primary-background;
+    justify-content: flex-start;
+    align-items: center;
+    transition: all 0.5s ease-in-out;
+    border-right: 1.5px solid $secondary-l-background;
+    &.hidden {
+      left: -100%;
+    }
+    > div {
+      margin-bottom: 2em !important;
+    }
+  }
+}
+@media screen and (max-width: 1000px) {
+  .user {
+    font-size: 16px;
+    .fas {
+    }
+  }
+}

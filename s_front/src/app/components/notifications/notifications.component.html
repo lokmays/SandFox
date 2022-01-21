@@ -1,0 +1,125 @@
+<table class="table table-striped table-hover">
+  <thead class="thead-dark table-bordered">
+    <tr>
+      <th id="selectable" (click)="onClickSortW()" style="cursor: pointer" title="Tri par niveau d'Alerte">Seuil depassé
+        {{icon}}
+      </th>
+      <th id="selectable" (click)="onClickSortD()" style="cursor: pointer" title="Tri par date">Date {{icon}}</th>
+      <th>Type</th>
+      <th>Valeur energetique</th>
+      <th>Bâtiment</th>
+      <th id="selectable" (click)="onClickToggleS()" title="Masquer les Notifications lues"
+        *ngIf="!notifShowSeen;else dontShow"><i class=" fas fa-check"></i>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let notification of (notifications|async)" (click)="onClick(notification)"
+      [class]="'table-'+notification.level" id="{{notification.seen}}">
+      <td>{{notification.seuil}}</td>
+      <td>{{(notification.createdAt | date:'medium':undefined:"fr") ||'_'}}</td>
+      <td>{{notification.alarm.type.replace('_',' ')}}</td>
+      <td>{{notification.value==undefined ?'_': notification.value}}</td>
+      <td>{{notification.buildingName}}</td>
+      <td *ngIf="(notification.seen);else unseen" id="{{notification.seen}}"><img src="../../assets/icons/eye.svg"></td>
+    </tr>
+  </tbody>
+</table>
+<div class="center" id="background" *ngIf="!(popupHidden|async) && (popupAlarm|async); let alarm"
+  (click)="onPopupBackClick($event)">
+  <div class="alert-box">
+    <div class="modal-header">
+      <h6 class="modal-title">Modifier l'alarme</h6>
+      <button type="button" class="close" aria-label="Close" (click)="togglePopup()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="flex-row">
+        <div class="col-6">
+          <div>
+            <strong>Type:</strong>
+          </div>
+          <div>
+            <strong>Bâtiments:</strong>
+          </div>
+        </div>
+        <div class="col-6">
+          <div>{{alarm.type.replace('_',' ')}}</div>
+          <div>{{alarm.buildings}}</div>
+        </div>
+      </div>
+      <strong>Niveau elevé</strong>
+      <div class="flex-row">
+        <div class="col-6">
+          <strong>Seuil min</strong>
+          <div>{{alarm.high_level.seuil_min || '_'}}</div>
+        </div>
+        <div class="col-6">
+          <strong>Seuil max</strong>
+          <div>{{alarm.high_level.seuil_max || '_'}}</div>
+        </div>
+      </div>
+      <strong>Niveau moyen</strong>
+      <div class="flex-row">
+        <div class="col-6">
+          <strong>Seuil min</strong>
+          <div>{{alarm.avg_level.seuil_min || '_'}}</div>
+        </div>
+        <div class="col-6">
+          <strong>Seuil max</strong>
+          <div>{{alarm.avg_level.seuil_max || '_'}}</div>
+        </div>
+      </div>
+      <strong>Niveau faible</strong>
+      <div class="flex-row">
+        <div class="col-6">
+          <strong>Seuil min</strong>
+          <div>{{alarm.low_level.seuil_min || '_'}}</div>
+        </div>
+        <div class="col-6">
+          <strong>Seuil max</strong>
+          <div>{{alarm.low_level.seuil_max || '_'}}</div>
+        </div>
+      </div>
+      <div class="flex-row">
+        <div>
+          SMS
+          <ng-container *ngIf="alarm.sms">
+            <i class="fas fa-check"></i>
+          </ng-container>
+          <ng-container *ngIf="!alarm.sms">
+            <i class="fas fa-times"></i>
+          </ng-container>
+        </div>
+        <div>
+          Email
+          <ng-container *ngIf="alarm.email">
+            <i class="fas fa-check"></i>
+          </ng-container>
+          <ng-container *ngIf="!alarm.email">
+            <i class="fas fa-times"></i>
+          </ng-container>
+        </div>
+        <div>
+          Notification
+          <ng-container *ngIf="alarm.notification">
+            <i class="fas fa-check"></i>
+          </ng-container>
+          <ng-container *ngIf="!alarm.notification">
+            <i class="fas fa-times"></i>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #unseen>
+  <td><img src="../../assets/icons/eye-hidden.svg"></td>
+</ng-template>
+
+<ng-template #dontShow>
+  <th id="selectable" (click)="onClickToggleS()" title="Afficher les Notifications lues"><i class=" fas fa-times"></i>
+  </th>
+</ng-template>

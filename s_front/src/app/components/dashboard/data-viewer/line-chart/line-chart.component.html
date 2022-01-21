@@ -1,0 +1,17 @@
+<div class="containr">
+    <ul class="buildings box" [style.width]="width + margin.left/2 + margin.right/2 + 'px'">
+        <li *ngFor=" let building of (dataManagerService.choosedBuildings|async); let i=index;" [style.background-color]="uiService.colors[i]">
+            <span>{{building}}</span>
+            <div class="close-btn" (click)="dataManagerService.toggleBuilding(building)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+          <path
+            d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z" />
+        </svg>
+            </div>
+        </li>
+    </ul>
+    <app-general-view class="box shadow">
+    </app-general-view>
+    <svg id="viewer" class="box shadow" [style.width]="width + margin.left/2 + margin.right/2 + 'px'" [style.height]="height + margin.top + margin.bottom + 'px'">
+    </svg>
+</div>

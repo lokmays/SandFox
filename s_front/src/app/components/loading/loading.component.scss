@@ -1,0 +1,26 @@
+.main {
+  position: fixed;
+  opacity: 0.5;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: #191f26;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  z-index: 1499;
+  .center {
+    background-image: url("/assets/loading.gif");
+    background-size: cover;
+    width: 600px;
+    height: 450px;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .center {
+    height: 300px !important;
+  }
+}

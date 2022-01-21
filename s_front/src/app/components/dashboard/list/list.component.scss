@@ -1,0 +1,141 @@
+@import "../../../../styles.scss";
+$border-radius: 7px;
+$hover-color: #084866;
+.containr {
+  // margin: auto;
+  width: 100%;
+  .header {
+    padding-top: 12.8px;
+    color: $secondary-foreground;
+    display: flex;
+    justify-content: space-between;
+    .search {
+      display: flex;
+      border: 1px solid $secondary-foreground;
+      width: fit-content;
+
+      height: fit-content;
+
+      border-radius: 5px;
+      padding: 1px;
+      margin-left: 1rem;
+      button {
+        height: 1.97rem;
+        border: none;
+        cursor: pointer;
+        outline: none;
+        svg {
+          height: 1.2rem;
+          fill: $secondary-foreground;
+        }
+      }
+      #search {
+        outline: none;
+        height: 1.97rem;
+        width: 10rem;
+        font-size: 1.1rem;
+        border: none;
+        color: $secondary-foreground;
+      }
+    }
+    .nav {
+      width: fit-content;
+
+      display: flex;
+      border-radius: $border-radius;
+      box-shadow: 2px 2px 10px 1px $secondary-l-background;
+      margin-bottom: 1rem;
+      margin-right: 1.5rem;
+      a {
+        padding: 0.3rem;
+        color: $secondary-l-background;
+        border: 1px solid $secondary-l-background;
+        background-color: $primary-background;
+        text-decoration: none;
+        border-radius: $border-radius 0px 0px $border-radius;
+        cursor: pointer;
+        transition: all 0.2s ease-out;
+      }
+      a:not(:first-child) {
+        border-radius: 0px $border-radius $border-radius 0px;
+      }
+      a:not(.active):hover {
+        background-color: $hover-color;
+        color: $primary-foreground;
+      }
+      .active {
+        background-color: $secondary-l-background;
+        color: $primary-foreground;
+      }
+    }
+  }
+  .table {
+    border-radius: 10px;
+    height: 80vh;
+    width: 98%;
+    margin-left: 1rem;
+    overflow-y: auto !important;
+    table {
+      width: 100%;
+      $border-color: $secondary-foreground;
+      height: fit-content;
+
+      border-collapse: collapse;
+      border-radius: 5px;
+      thead {
+        font-family: "Lato-Bold", sans-serif;
+        background-color: rgb(49, 99, 122);
+        color: $primary-foreground;
+        font-size: 1.1rem;
+        text-align: left;
+        tr {
+          th {
+            padding: 1rem 0.5rem;
+          }
+          th:last-child {
+            border-radius: 0px 10px 0px 0px;
+          }
+        }
+      }
+      tbody {
+        font-family: "Lato-Regular", sans-serif;
+        text-align: left;
+        color: #808080;
+        tr {
+          td {
+            padding: 0.7rem 0.5rem;
+          }
+          .checkbox {
+            padding-left: 1rem;
+          }
+        }
+        tr:nth-child(even) {
+          background-color: #f8faff;
+        }
+      }
+    }
+    .building-item {
+      cursor: pointer;
+      transition: all 0.25s ease-out;
+      &:hover {
+        background-color: rgba($secondary-l-background, 0.8) !important;
+        color: $primary-background !important;
+      }
+    }
+    .checkbox {
+      input {
+        appearance: none;
+        border: 1px solid rgb(49, 99, 122);
+        border-radius: 2px;
+        height: 1rem;
+        width: 1rem;
+        background-color: $primary-foreground;
+        outline: none;
+        cursor: pointer;
+      }
+      input:checked {
+        background-color: rgb(49, 99, 122);
+      }
+    }
+  }
+}

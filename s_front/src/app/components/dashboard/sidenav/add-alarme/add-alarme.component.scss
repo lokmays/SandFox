@@ -1,0 +1,114 @@
+@import "../../../../../styles.scss";
+.containr {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  min-height: fit-content;
+
+  padding-bottom: 5rem;
+  h3 {
+    margin: 0.5rem;
+  }
+  .buildings {
+    overflow: auto;
+    white-space: nowrap;
+    flex-wrap: nowrap !important;
+    width: 100%;
+    overflow-y: auto;
+    li {
+      float: none;
+      display: inline-block;
+    }
+  }
+  .levels {
+    .tabs {
+      display: flex;
+      flex-direction: row;
+      cursor: pointer;
+      .tab {
+        padding: 0.25rem 1rem;
+        color: $secondary-d-background;
+        &.high {
+          background-color: rgb(189, 78, 78);
+          border-radius: 5px 0px 0px 0px;
+        }
+        &.avg {
+          background-color: rgb(233, 167, 44);
+        }
+        &.low {
+          background-color: rgb(52, 179, 58);
+          border-radius: 0px 5px 0px 0px;
+        }
+      }
+    }
+    .tab-page {
+      display: none;
+      padding: 1rem;
+      border-radius: 0px 2px 8px 8px;
+      border: 3px solid;
+      border-top: 5px solid;
+      //TODO: background color for tab pages
+      &.high {
+        border-color: rgb(189, 78, 78);
+      }
+      &.avg {
+        border-color: rgb(233, 167, 44);
+      }
+      &.low {
+        border-color: rgb(52, 179, 58);
+      }
+      &.active {
+        display: block;
+        .s-min,
+        .s-max {
+          margin: 0.4rem 0rem;
+          span {
+          }
+          input {
+            font-size: 1rem;
+            padding: 0.2rem;
+            width: 6rem;
+            border-radius: 5px;
+            background-color: transparent;
+            color: $primary-foreground;
+            outline: none;
+            margin: 0rem 0.5rem;
+            box-shadow: none;
+            border: 1px solid $primary-background;
+          }
+          input::-webkit-inner-spin-button,
+          input::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+          }
+        }
+      }
+    }
+    .notifs {
+      > span,
+      > div {
+        margin: 0.5rem 0rem;
+      }
+      div {
+        margin: 0.5rem 0rem;
+        span {
+          margin: 0rem 0.5rem;
+        }
+        input {
+          appearance: none;
+          border: 1px solid $primary-background;
+          border-radius: 2px;
+          height: 1rem;
+          width: 1rem;
+          background-color: $secondary-l-background;
+          outline: none;
+          cursor: pointer;
+        }
+        input:checked {
+          background-color: $primary-background;
+        }
+      }
+    }
+  }
+}

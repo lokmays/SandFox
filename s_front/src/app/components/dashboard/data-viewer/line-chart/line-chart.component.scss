@@ -1,0 +1,80 @@
+@import "../../../../../styles.scss";
+.containr {
+  height: 50vh;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  position: relative;
+  display: fixed;
+  right: 0;
+  bottom: 100%;
+  background-color: $primary-background;
+  .box.buildings {
+    overflow: auto;
+    max-width: 90vw;
+    min-height: 4rem;
+    display: flex;
+    flex-direction: row;
+    margin-top: 0;
+    padding: 0;
+    li {
+      list-style: none;
+      color: $primary-foreground;
+      padding: 0.75rem 1.5rem 0.75rem 1rem;
+      margin: 0.5rem;
+      border-radius: 5px;
+      position: relative;
+      .close-btn {
+        position: absolute;
+        right: 0;
+        top: 0rem;
+        overflow: hidden;
+        border-radius: 100%;
+        transition: all 0.1s ease-out;
+        padding: 0.35rem 0.5rem;
+        cursor: pointer;
+        svg {
+          height: 0.75rem;
+          width: 0.75rem;
+          * {
+            fill: $primary-foreground;
+          }
+        }
+        .close-btn:active {
+          background-color: rgba(255, 255, 255, 0.8);
+        }
+        .close-btn:hover {
+          background-color: rgba(200, 200, 200, 0.5);
+        }
+      }
+    }
+  }
+  #viewer {
+    overflow: hidden;
+    padding: 0;
+  }
+  .box {
+    margin: 0.5rem 1rem 0rem;
+    box-sizing: content-box;
+    width: fit-content;
+
+    overflow: auto;
+  }
+  .shadow {
+    box-shadow: 0 0px 28px rgba(30, 30, 30, 0.2);
+  }
+  .hide {
+    z-index: 1000;
+    position: absolute;
+    top: 1%;
+    right: 1%;
+    cursor: pointer;
+    border: 1px solid $secondary-d-background;
+    border-radius: 50%;
+    padding: 0.7rem;
+    svg {
+      // padding: .3rem .35rem .2rem .35rem;
+    }
+  }
+}
